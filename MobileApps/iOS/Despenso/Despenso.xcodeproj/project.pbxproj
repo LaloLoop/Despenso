@@ -9,12 +9,13 @@
 /* Begin PBXBuildFile section */
 		2012AB02245E1861008A7E65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2012AB01245E1861008A7E65 /* AppDelegate.swift */; };
 		2012AB04245E1861008A7E65 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2012AB03245E1861008A7E65 /* SceneDelegate.swift */; };
-		2012AB06245E1861008A7E65 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2012AB05245E1861008A7E65 /* ContentView.swift */; };
+		2012AB06245E1861008A7E65 /* RecordingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2012AB05245E1861008A7E65 /* RecordingView.swift */; };
 		2012AB08245E1865008A7E65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2012AB07245E1865008A7E65 /* Assets.xcassets */; };
 		2012AB0B245E1865008A7E65 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2012AB0A245E1865008A7E65 /* Preview Assets.xcassets */; };
 		2012AB0E245E1865008A7E65 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2012AB0C245E1865008A7E65 /* LaunchScreen.storyboard */; };
 		2012AB19245E1865008A7E65 /* DespensoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2012AB18245E1865008A7E65 /* DespensoTests.swift */; };
 		2012AB24245E1865008A7E65 /* DespensoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2012AB23245E1865008A7E65 /* DespensoUITests.swift */; };
+		2012AB35245E372A008A7E65 /* Recorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2012AB34245E372A008A7E65 /* Recorder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +39,7 @@
 		2012AAFE245E1861008A7E65 /* Despenso.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Despenso.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2012AB01245E1861008A7E65 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2012AB03245E1861008A7E65 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		2012AB05245E1861008A7E65 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		2012AB05245E1861008A7E65 /* RecordingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingView.swift; sourceTree = "<group>"; };
 		2012AB07245E1865008A7E65 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2012AB0A245E1865008A7E65 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2012AB0D245E1865008A7E65 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +50,7 @@
 		2012AB1F245E1865008A7E65 /* DespensoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DespensoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2012AB23245E1865008A7E65 /* DespensoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DespensoUITests.swift; sourceTree = "<group>"; };
 		2012AB25245E1865008A7E65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2012AB34245E372A008A7E65 /* Recorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recorder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,9 +101,10 @@
 		2012AB00245E1861008A7E65 /* Despenso */ = {
 			isa = PBXGroup;
 			children = (
+				2012AB33245E3710008A7E65 /* Services */,
 				2012AB01245E1861008A7E65 /* AppDelegate.swift */,
 				2012AB03245E1861008A7E65 /* SceneDelegate.swift */,
-				2012AB05245E1861008A7E65 /* ContentView.swift */,
+				2012AB05245E1861008A7E65 /* RecordingView.swift */,
 				2012AB07245E1865008A7E65 /* Assets.xcassets */,
 				2012AB0C245E1865008A7E65 /* LaunchScreen.storyboard */,
 				2012AB0F245E1865008A7E65 /* Info.plist */,
@@ -134,6 +137,14 @@
 				2012AB25245E1865008A7E65 /* Info.plist */,
 			);
 			path = DespensoUITests;
+			sourceTree = "<group>";
+		};
+		2012AB33245E3710008A7E65 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				2012AB34245E372A008A7E65 /* Recorder.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -269,7 +280,8 @@
 			files = (
 				2012AB02245E1861008A7E65 /* AppDelegate.swift in Sources */,
 				2012AB04245E1861008A7E65 /* SceneDelegate.swift in Sources */,
-				2012AB06245E1861008A7E65 /* ContentView.swift in Sources */,
+				2012AB06245E1861008A7E65 /* RecordingView.swift in Sources */,
+				2012AB35245E372A008A7E65 /* Recorder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
