@@ -8,31 +8,30 @@
 
 import SwiftUI
 
-func recordAudio() {
-    
-}
-
 var recorder: Recorder!
 
+func startRecording() {
+    recorder.startRecording()
+}
+
+func stopRecording() {
+    recorder.stopRecording()
+}
+
 struct RecordingView: View, RecorderDelegate {
+    
     @State var recordingAllowed = false
+    
+    @State var recording = false
+    
     @State var showAlertError = false
     @State var alertError = ""
-    
-    func userPermission(_ sender: Recorder, allowed: Bool) {
-        recordingAllowed = allowed
-    }
-    
-    func setupError(_ sender: Recorder, error: String) {
-        showAlertError = true
-        alertError = error
-    }
     
     var body: some View {
         
         VStack {
-            Button(action: recordAudio) {
-                Text("Record my list!")
+            Button(action: recording ? stopRecording : startRecording) {
+                Text(recording ? "Stop recording" : "Record my list!")
             }
             .disabled(!recordingAllowed)
             .onAppear {
@@ -50,6 +49,30 @@ struct RecordingView: View, RecorderDelegate {
                     .padding(.top, 15)
             }
         }
+    }
+    
+    // MARK: Delegate methods
+    
+    func userPermission(_ sender: Recorder, allowed: Bool) {
+        recordingAllowed = allowed
+    }
+    
+    func setupError(_ sender: Recorder, error: String) {
+        showAlertError = true
+        alertError = error
+    }
+    
+    func recordingStarted(_ sender: Recorder) {
+        recording = true
+    }
+    
+    func recordingFinished(_ sender: Recorder, successfully: Bool) {
+        recording = false
+    }
+    
+    func recordingErrorDidOccur(_ sender: Recorder, error: String) {
+        alertError = error
+        showAlertError = true
     }
 }
 
