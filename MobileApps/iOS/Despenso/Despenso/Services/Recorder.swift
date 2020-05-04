@@ -5,6 +5,10 @@
 //  Created by Eduardo Gutiérrez Silva on 02/05/20.
 //  Copyright © 2020 Lalogs. All rights reserved.
 //
+// Implemented with help from the following sources:
+// * Views lifecycles: https://www.hackingwithswift.com/quick-start/swiftui/how-to-respond-to-view-lifecycle-events-onappear-and-ondisappear
+// * Understanding delegates: https://www.appcoda.com/swift-delegate/
+// * Record and Play audio in iOS Swift: https://gist.github.com/vikaskore/e5d9fc91feac455d6b4778b3d768a6e8
 
 import Foundation
 import AVFoundation
