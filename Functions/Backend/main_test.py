@@ -3,12 +3,12 @@ from io import StringIO
 from unittest.mock import Mock, MagicMock, patch
 from google.cloud.speech_v1p1beta1 import SpeechClient, enums
 
-import list_processor
+import main as list_processor
 
 class TestListProcessor(unittest.TestCase):
 
     @patch('sys.stdout', new_callable=StringIO)
-    @patch('list_processor.SpeechClient', spec = True)
+    @patch('main.SpeechClient', spec = True)
     def test_spoken_list_processor(self, mock_client, mock_stdout):
         # Setting up Cloud Function variables
         event = {
