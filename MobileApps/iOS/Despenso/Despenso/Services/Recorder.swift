@@ -16,9 +16,12 @@ protocol RecorderDelegate {
     func recordingStarted(_ sender: Recorder)
     func recordingFinished(_ sender: Recorder, successfully: Bool)
     func recordingErrorDidOccur(_ sender: Recorder, error: String)
+    func playingStarted(_ sender: Recorder)
+    func playingFinished(_ sender: Recorder, successfully: Bool)
+    func playingErrorDidOccur(_ sender: Recorder, error: String)
 }
 
-final class Recorder: NSObject, AVAudioRecorderDelegate {
+final class Recorder: NSObject, AVAudioRecorderDelegate, AVAudioPlayerDelegate {
     var recordingSession: AVAudioSession
     var audioRecorder: AVAudioRecorder!
     var audioPlayer: AVAudioPlayer!
@@ -71,6 +74,28 @@ final class Recorder: NSObject, AVAudioRecorderDelegate {
         audioRecorder = nil
     }
     
+    func startPlaying() {
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: _getFileURL())
+            audioPlayer.delegate = self
+            audioPlayer.prepareToPlay()
+            audioPlayer.volume = 30.0
+            
+            audioPlayer.play()
+            
+            self.delegate?.playingStarted(self)
+            
+        } catch {
+            stopPlaying()
+            self.delegate?.playingFinished(self, successfully: false)
+        }
+    }
+    
+    func stopPlaying() {
+        audioPlayer.stop()
+        audioPlayer = nil
+    }
+    
     //MARK: Private methods
     
     private func _getFileURL() -> URL {
@@ -91,5 +116,13 @@ final class Recorder: NSObject, AVAudioRecorderDelegate {
     
     func audioRecorderEncodeErrorDidOccur(_ recorder: AVAudioRecorder, error: Error?) {
         self.delegate?.recordingErrorDidOccur(self, error: error?.localizedDescription ?? "Unknown")
+    }
+    
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        self.delegate?.playingFinished(self, successfully: flag)
+    }
+    
+    func audioPlayerDecodeErrorDidOccur(_ player: AVAudioPlayer, error: Error?) {
+        self.delegate?.playingErrorDidOccur(self, error: error?.localizedDescription ?? "Unknown")
     }
 }

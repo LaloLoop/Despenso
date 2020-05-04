@@ -18,11 +18,20 @@ func stopRecording() {
     recorder.stopRecording()
 }
 
+func stopPlaying() {
+    recorder.stopPlaying()
+}
+
+func startPlaying() {
+    recorder.startPlaying()
+}
+
 struct RecordingView: View, RecorderDelegate {
     
     @State var recordingAllowed = false
     
     @State var recording = false
+    @State var playing = false
     
     @State var showAlertError = false
     @State var alertError = ""
@@ -33,7 +42,7 @@ struct RecordingView: View, RecorderDelegate {
             Button(action: recording ? stopRecording : startRecording) {
                 Text(recording ? "Stop recording" : "Record my list!")
             }
-            .disabled(!recordingAllowed)
+            .disabled(!recordingAllowed || playing)
             .onAppear {
                 recorder = Recorder(delegate: self)
                 recorder.setupPermissions()
@@ -48,6 +57,12 @@ struct RecordingView: View, RecorderDelegate {
                     .font(.callout)
                     .padding(.top, 15)
             }
+            
+            Button(action: playing ? stopPlaying : startPlaying) {
+                Text(playing ? "Stop Playing" : "Start Playing")
+            }
+            .disabled(recording)
+            .padding(.top, 20)
         }
     }
     
@@ -71,6 +86,19 @@ struct RecordingView: View, RecorderDelegate {
     }
     
     func recordingErrorDidOccur(_ sender: Recorder, error: String) {
+        alertError = error
+        showAlertError = true
+    }
+    
+    func playingStarted(_ sender: Recorder) {
+        playing = true
+    }
+    
+    func playingFinished(_ sender: Recorder, successfully: Bool) {
+        playing = false
+    }
+    
+    func playingErrorDidOccur(_ sender: Recorder, error: String) {
         alertError = error
         showAlertError = true
     }
