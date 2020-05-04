@@ -43,10 +43,6 @@ struct RecordingView: View, RecorderDelegate {
                 Text(recording ? "Stop recording" : "Record my list!")
             }
             .disabled(!recordingAllowed || playing)
-            .onAppear {
-                recorder = Recorder(delegate: self)
-                recorder.setupPermissions()
-            }
             .alert(isPresented: $showAlertError) {
                 Alert(title: Text("Error getting recording permission"), message: Text(alertError), dismissButton: .default(Text("Ok")))
             }
@@ -64,9 +60,13 @@ struct RecordingView: View, RecorderDelegate {
             .disabled(recording)
             .padding(.top, 20)
         }
+        .onAppear {
+            recorder = Recorder(delegate: self)
+            recorder.setupPermissions()
+        }
     }
     
-    // MARK: Delegate methods
+    // MARK: Record Delegate methods
     
     func userPermission(_ sender: Recorder, allowed: Bool) {
         recordingAllowed = allowed

@@ -13,7 +13,6 @@
 import Foundation
 import AVFoundation
 
-
 protocol RecorderDelegate {
     func userPermission(_ sender: Recorder, allowed: Bool)
     func setupError(_ sender: Recorder, error: String)
@@ -26,24 +25,26 @@ protocol RecorderDelegate {
 }
 
 final class Recorder: NSObject, AVAudioRecorderDelegate, AVAudioPlayerDelegate {
-    var recordingSession: AVAudioSession
+    var audioSession: AudioSessionProtocol
     var audioRecorder: AVAudioRecorder!
     var audioPlayer: AVAudioPlayer!
     
     var delegate: RecorderDelegate?
     
-    init(delegate: RecorderDelegate) {
-        recordingSession = AVAudioSession.sharedInstance()
+    // MARK: Public API
+    
+    init(session audioSession: AudioSessionProtocol = AudioSession(), delegate: RecorderDelegate) {
+        self.audioSession = audioSession
         self.delegate = delegate
     }
     
-    func setupPermissions() {
+    func setupPermissions(_ expectation: (() -> Void)? = nil) {
         do {
-            try recordingSession.setCategory(.playAndRecord, mode: .default)
-            try recordingSession.setActive(true)
-            recordingSession.requestRecordPermission() { [unowned self] allowed in
+            try audioSession.requestRecordPermissionWith(.playback, mode: .default, active: true) { [unowned self] allowed in
                 DispatchQueue.main.async {
                     self.delegate?.userPermission(self, allowed: allowed)
+                    
+                    expectation?()
                 }
             }
         } catch {
