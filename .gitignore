@@ -217,3 +217,4 @@ fastlane/screenshots/screenshots.html
 fastlane/test_output
 
 # End of https://www.gitignore.io/api/xcode,linux,macos,python,visualstudiocode
+*.rtf
