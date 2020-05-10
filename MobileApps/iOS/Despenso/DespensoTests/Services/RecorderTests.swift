@@ -52,7 +52,7 @@ class RecorderTests: XCTestCase {
     // MARK: Common setup and tests
     
     private func _setupUserAllowed(_ allowed: Bool) throws -> RecorderDelegateMock {
-        audioSessionMock = UserResponsedWithMock(allowed)
+        audioSessionMock = UserRespondedWithMock(allowed)
         recorder = Recorder(session: audioSessionMock, delegate: recorderDelegate)
         let expectation = self.expectation(description: "Calling Delegate")
         

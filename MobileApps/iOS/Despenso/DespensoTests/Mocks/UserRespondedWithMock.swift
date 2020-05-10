@@ -1,5 +1,5 @@
 //
-//  UserResponsedWithMock.swift
+//  UserRespondedWithMock.swift
 //  DespensoTests
 //
 //  Created by Eduardo Gutiérrez Silva on 03/05/20.
@@ -9,7 +9,7 @@
 import AVFoundation
 @testable import Despenso
 
-class UserResponsedWithMock: AudioSessionProtocol {
+class UserRespondedWithMock: AudioSessionProtocol {
     let userSelection: Bool
     
     init(_ selection: Bool) {
