@@ -23,3 +23,26 @@ blocks:
             - 'flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics'
             - flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
             - python main_test.py
+  - name: iOS app
+    dependencies: []
+    run:
+      when: "change_in('/MobileApps/iOS')"
+    agent:
+      machine:
+        type: a1-standard-4
+        os_image: macos-mojave-xcode11
+    task:
+      env_vars:
+        - name: LANG
+          value: en_US.UTF-8
+      prologue:
+        commands:
+          - checkout
+          - cache restore
+          - bundle install
+          - cache store
+      jobs:
+        - name: Test
+          commands:
+            - bundle exec xcversion select 11.4.1
+            - bundle exec fastlane test
