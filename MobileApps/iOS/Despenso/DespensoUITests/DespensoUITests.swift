@@ -23,7 +23,7 @@ class DespensoUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testFirstTimeUsage() throws {
+    func testPermissinoGrantedOnFirstTimeUsage() throws {
         // UI tests must launch the application that they test.
         let app = XCUIApplication()
         app.resetAuthorizationStatus(for: .microphone)
@@ -43,9 +43,16 @@ class DespensoUITests: XCTestCase {
             return false
         }
         
-        app.tap()
+        app.swipeUp()
         
-        // Verify buttons are displayed as enabled and with proper labels
+        let recordButton = app.buttons["Record my list!"]
+        let playButton = app.buttons["Start Playing"]
+        
+        XCTAssert(recordButton.exists)
+        XCTAssert(recordButton.isEnabled)
+        
+        XCTAssert(playButton.exists)
+        XCTAssert(playButton.isEnabled)
         
         self.removeUIInterruptionMonitor(interruptionMonitor)
     }
