@@ -1,6 +1,6 @@
 # Despenso iOS app
 
-This project has the current implementation of the Despenso app, to record your groceries lists, it's meanto to be run on iOS 13.3 devices and above.
+This project has the current implementation of the Despenso app, to record your groceries lists, it's mean to to be run on iOS 13.3 devices and above.
 
 It uses SwitfUI definitions, and tries to abstract the logic out of the views.
 
@@ -10,9 +10,13 @@ Since this App's main way of interacting with the user is through speech, microp
 
 ## Testing
 
-The app has Unit tests, that are manually mocked if encessary. There's a level to which tests no longer occurr, and it's defined at the Core group, which is the lowest level interaction with the Framework. If we went a level deepere, we'd need to mock the Framework classes which is currently not supported by Swift and the lack of reflection as in other languages.
+The app has Unit and UI tests.
 
-In my experience, there's no point in testing exact calls to functions in classes, since that is kind of programming the actual implementation, which makes brittle tests. Tests in for the perspective of this project, work best if oriented into the expected behavior of the code.
+For unit tests some dependencies are manually mocked if necessary. There's a level to which tests no longer occur, and it's defined at the [Core group](Despenso/Core/), which is the lowest level interaction with the Framework. If we went a level deeper, we'd need to mock the Framework classes which is currently not supported by Swift and its lack of reflection available in other languages.
+
+In my experience, there's no point in testing exact calls to functions in classes, since that is kind of testing the actual implementation, which makes brittle tests. Tests in the perspective of this project, work best if oriented into the expected behavior of the code.
+
+UI tests with run without mocking, which make them more like E2E tests.
 
 ## ToDos
 
@@ -22,6 +26,6 @@ In my experience, there's no point in testing exact calls to functions in classe
   - [ ] Setting up amount of items
   - [ ] Deleting items
   - [ ] Updating items: name, quantity, buy time, price, store
-- [ ] Add unit tests
-- [ ] Add UI tests
+- [x] Add unit tests
+- [x] Add UI tests
 - [ ] Upload audio recordings
