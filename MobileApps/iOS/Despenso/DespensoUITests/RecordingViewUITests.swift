@@ -44,40 +44,6 @@ class RecordingViewUITests: XCTestCase {
         XCTAssert(playButton.exists)
         XCTAssert(playButton.isEnabled)
         
-        
-        // Recording manually stopped
-        
-        app.buttons["Record my list!"].tap()
-        XCTAssertFalse(playButton.isEnabled)
-        
-        sleep(2)
-        
-        app.buttons["Stop recording"].tap()
-        XCTAssert(playButton.isEnabled)
-        
-        playButton.tap()
-        XCTAssertFalse(recordButton.isEnabled)
-        
-        app.buttons["Stop Playing"].tap()
-        
-        XCTAssert(recordButton.isEnabled)
-        XCTAssert(playButton.exists)
-        
-        // Recording stops on its own
-        
-        app.buttons["Record my list!"].tap()
-        XCTAssertFalse(playButton.isEnabled)
-        
-        app.buttons["Stop recording"].tap()
-        XCTAssert(playButton.isEnabled)
-        
-        playButton.tap()
-        XCTAssertFalse(recordButton.isEnabled)
-        
-        sleep(1)
-        
-        XCTAssert(recordButton.isEnabled)
-        XCTAssert(playButton.exists)
     }
     
     func testPermissionDeinedOnFirstTimeUsage() {
