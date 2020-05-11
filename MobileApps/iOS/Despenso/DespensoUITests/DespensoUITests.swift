@@ -9,7 +9,7 @@
 import XCTest
 
 class DespensoUITests: XCTestCase {
-
+    
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
 
@@ -23,13 +23,31 @@ class DespensoUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
+    func testFirstTimeUsage() throws {
         // UI tests must launch the application that they test.
         let app = XCUIApplication()
-        app.launch()
+        app.resetAuthorizationStatus(for: .microphone)
+        
+        var interruptionMonitor: NSObjectProtocol!
+        let alertDescription = "“Despenso” Would Like to Access the Microphone"
 
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+        app.launch()
+        
+        interruptionMonitor = addUIInterruptionMonitor(withDescription: alertDescription) { (alert) -> Bool in
+            if alert.buttons["OK"].exists {
+                alert.buttons["OK"].tap()
+                return true
+            }
+            return false
+        }
+        
+        app.tap()
+        
+        // Verify buttons are displayed as enabled and with proper labels
+        
+        self.removeUIInterruptionMonitor(interruptionMonitor)
     }
 
     func testLaunchPerformance() throws {
@@ -40,4 +58,5 @@ class DespensoUITests: XCTestCase {
             }
         }
     }
+    
 }
