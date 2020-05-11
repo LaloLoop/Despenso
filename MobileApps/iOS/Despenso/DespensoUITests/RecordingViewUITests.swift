@@ -38,14 +38,9 @@ class RecordingViewUITests: XCTestCase {
         let recordButton = app.buttons["Record my list!"]
         let playButton = app.buttons["Start Playing"]
         
-        XCTAssert(recordButton.exists)
         XCTAssert(recordButton.isEnabled)
-        
-        XCTAssert(playButton.exists)
+        XCTAssertFalse(app.staticTexts["Please allow microphone permissions to record your list"].exists)
         XCTAssert(playButton.isEnabled)
-        
-        
-        // Recording manually stopped
         
         app.buttons["Record my list!"].tap()
         XCTAssertFalse(playButton.isEnabled)
@@ -53,13 +48,6 @@ class RecordingViewUITests: XCTestCase {
         app.buttons["Stop recording"].tap()
         XCTAssert(playButton.isEnabled)
         
-        playButton.tap()
-        XCTAssertFalse(recordButton.isEnabled)
-        
-        sleep(1)
-        
-        XCTAssert(recordButton.isEnabled)
-        XCTAssert(playButton.exists)
     }
     
     func testPermissionDeniedOnFirstTimeUsage() {
