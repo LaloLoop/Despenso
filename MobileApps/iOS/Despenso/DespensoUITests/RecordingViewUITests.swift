@@ -50,11 +50,16 @@ class RecordingViewUITests: XCTestCase {
         app.buttons["Record my list!"].tap()
         XCTAssertFalse(playButton.isEnabled)
         
-        sleep(2)
-        
         app.buttons["Stop recording"].tap()
         XCTAssert(playButton.isEnabled)
         
+        playButton.tap()
+        XCTAssertFalse(recordButton.isEnabled)
+        
+        sleep(1)
+        
+        XCTAssert(recordButton.isEnabled)
+        XCTAssert(playButton.exists)
     }
     
     func testPermissionDeniedOnFirstTimeUsage() {
