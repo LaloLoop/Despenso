@@ -99,6 +99,7 @@ final class Recorder: NSObject, AVAudioRecorderDelegate, AVAudioPlayerDelegate {
     func stopPlaying() {
         audioPlayer.stop()
         audioPlayer = nil
+        self.delegate?.playingFinished(self, successfully: false)
     }
     
     //MARK: Private methods

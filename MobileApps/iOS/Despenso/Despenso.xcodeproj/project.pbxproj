@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2002D6312468FE4700F3D2E8 /* MicrophonePermissionsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2002D6302468FE4700F3D2E8 /* MicrophonePermissionsUITests.swift */; };
+		2002D6312468FE4700F3D2E8 /* RecordingViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2002D6302468FE4700F3D2E8 /* RecordingViewUITests.swift */; };
 		2012AB02245E1861008A7E65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2012AB01245E1861008A7E65 /* AppDelegate.swift */; };
 		2012AB04245E1861008A7E65 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2012AB03245E1861008A7E65 /* SceneDelegate.swift */; };
 		2012AB06245E1861008A7E65 /* RecordingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2012AB05245E1861008A7E65 /* RecordingView.swift */; };
@@ -44,7 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2002D6302468FE4700F3D2E8 /* MicrophonePermissionsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicrophonePermissionsUITests.swift; sourceTree = "<group>"; };
+		2002D6302468FE4700F3D2E8 /* RecordingViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingViewUITests.swift; sourceTree = "<group>"; };
 		2012AAFE245E1861008A7E65 /* Despenso.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Despenso.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2012AB01245E1861008A7E65 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2012AB03245E1861008A7E65 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -155,7 +155,7 @@
 			children = (
 				2012AB23245E1865008A7E65 /* DespensoUITests.swift */,
 				2012AB25245E1865008A7E65 /* Info.plist */,
-				2002D6302468FE4700F3D2E8 /* MicrophonePermissionsUITests.swift */,
+				2002D6302468FE4700F3D2E8 /* RecordingViewUITests.swift */,
 			);
 			path = DespensoUITests;
 			sourceTree = "<group>";
@@ -360,7 +360,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2002D6312468FE4700F3D2E8 /* MicrophonePermissionsUITests.swift in Sources */,
+				2002D6312468FE4700F3D2E8 /* RecordingViewUITests.swift in Sources */,
 				2012AB24245E1865008A7E65 /* DespensoUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
