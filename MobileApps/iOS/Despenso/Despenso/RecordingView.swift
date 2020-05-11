@@ -57,7 +57,7 @@ struct RecordingView: View, RecorderDelegate {
             Button(action: playing ? stopPlaying : startPlaying) {
                 Text(playing ? "Stop Playing" : "Start Playing")
             }
-            .disabled(recording)
+            .disabled(!recordingAllowed || recording)
             .padding(.top, 20)
         }
         .onAppear {
