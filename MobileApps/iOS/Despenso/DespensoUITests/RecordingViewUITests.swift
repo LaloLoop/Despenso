@@ -31,7 +31,7 @@ class RecordingViewUITests: XCTestCase {
         self.removeUIInterruptionMonitor(interruptionMonitor)
     }
 
-    func testPermissinoGrantedOnFirstTimeUsage() throws {
+    func testPermissionGrantedOnFirstTimeUsage() throws {
         
         self._tapOnPermissionChoice("OK")
         
@@ -57,7 +57,7 @@ class RecordingViewUITests: XCTestCase {
         
     }
     
-    func testPermissionDeinedOnFirstTimeUsage() {
+    func testPermissionDeniedOnFirstTimeUsage() {
         self._tapOnPermissionChoice("Don’t Allow")
         
         XCTAssertFalse(app.buttons["Record my list!"].isEnabled)
