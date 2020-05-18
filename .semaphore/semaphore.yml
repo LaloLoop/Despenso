@@ -36,6 +36,7 @@ blocks:
           - cd MobileApps/iOS/Despenso/
           - cache restore
           - bundle install
+          - pod install
           - cache store
       jobs:
         - name: Test
