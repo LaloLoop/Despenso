@@ -12,16 +12,20 @@ import XCTest
 class RecorderTests: XCTestCase {
     var recorderDelegate: RecorderDelegate!
     var audioSessionMock: AudioSessionProtocol!
+    var audioRecorderMock: AudioRecorderProtocol!
     
     var recorder: Recorder!
     
     override func setUpWithError() throws {
+        // Default implementation for audio session
+        audioSessionMock = UserRespondedWithMock(true)
         recorderDelegate = RecorderDelegateMock()
     }
     
     override func tearDownWithError() throws {
         recorderDelegate = nil
         audioSessionMock = nil
+        audioRecorderMock = nil
         recorder = nil
     }
     
@@ -47,6 +51,27 @@ class RecorderTests: XCTestCase {
         
         XCTAssert(delegate.setupErrorCalled, "Did not notify error to delegate")
         XCTAssert(delegate.error.contains("Internal API error"), "Error message not rendered in delegate's message")
+    }
+    
+    func testRecordingStartsSuccessfully() throws {
+        audioRecorderMock = SuccessfulRecorderMock()
+        recorder = Recorder(
+            session: audioSessionMock,
+            recorderCreator: audioRecorderMock,
+            delegate: recorderDelegate
+        )
+        
+        recorder.startRecording()
+        
+        let delegate = recorderDelegate as! RecorderDelegateMock
+        let audioRecorder = audioRecorderMock as! SuccessfulRecorderMock
+        
+        XCTAssert(delegate.recordingStartedCalled, "Did not call delegate on recording start")
+        XCTAssert(audioRecorder.recordWithCalled, "Audio recorder was never created through creator")
+        
+        recorder.stopRecording()
+        
+        XCTAssert(audioRecorder.stopRecorderCalled, "Stop recorder callback was never called")
     }
     
     // MARK: Common setup and tests

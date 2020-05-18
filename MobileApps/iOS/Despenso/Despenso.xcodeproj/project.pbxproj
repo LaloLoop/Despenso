@@ -24,6 +24,9 @@
 		20450E43245FC84500D1C545 /* UserRespondedWithMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20450E42245FC84500D1C545 /* UserRespondedWithMock.swift */; };
 		20450E45245FD27A00D1C545 /* SetupErroredMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20450E44245FD27A00D1C545 /* SetupErroredMock.swift */; };
 		20450E47245FD38A00D1C545 /* DespensoMockError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20450E46245FD38A00D1C545 /* DespensoMockError.swift */; };
+		2085D026247203ED006D5FAD /* AudioRecorderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2085D025247203ED006D5FAD /* AudioRecorderProtocol.swift */; };
+		2085D028247204C4006D5FAD /* AudioRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2085D027247204C4006D5FAD /* AudioRecorder.swift */; };
+		2085D02A24720727006D5FAD /* SuccessfulRecorderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2085D02924720727006D5FAD /* SuccessfulRecorderMock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +70,9 @@
 		20450E42245FC84500D1C545 /* UserRespondedWithMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRespondedWithMock.swift; sourceTree = "<group>"; };
 		20450E44245FD27A00D1C545 /* SetupErroredMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupErroredMock.swift; sourceTree = "<group>"; };
 		20450E46245FD38A00D1C545 /* DespensoMockError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DespensoMockError.swift; sourceTree = "<group>"; };
+		2085D025247203ED006D5FAD /* AudioRecorderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecorderProtocol.swift; sourceTree = "<group>"; };
+		2085D027247204C4006D5FAD /* AudioRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecorder.swift; sourceTree = "<group>"; };
+		2085D02924720727006D5FAD /* SuccessfulRecorderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessfulRecorderMock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +189,7 @@
 				20450E42245FC84500D1C545 /* UserRespondedWithMock.swift */,
 				20450E44245FD27A00D1C545 /* SetupErroredMock.swift */,
 				20450E46245FD38A00D1C545 /* DespensoMockError.swift */,
+				2085D02924720727006D5FAD /* SuccessfulRecorderMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -190,6 +197,7 @@
 		20450E36245FB69100D1C545 /* Behavior */ = {
 			isa = PBXGroup;
 			children = (
+				2085D025247203ED006D5FAD /* AudioRecorderProtocol.swift */,
 				20450E39245FB76800D1C545 /* AudioSessionProtocol.swift */,
 			);
 			path = Behavior;
@@ -199,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				20450E3C245FB95600D1C545 /* AudioSession.swift */,
+				2085D027247204C4006D5FAD /* AudioRecorder.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -341,6 +350,8 @@
 				2012AB06245E1861008A7E65 /* RecordingView.swift in Sources */,
 				2012AB35245E372A008A7E65 /* Recorder.swift in Sources */,
 				20450E3D245FB95700D1C545 /* AudioSession.swift in Sources */,
+				2085D028247204C4006D5FAD /* AudioRecorder.swift in Sources */,
+				2085D026247203ED006D5FAD /* AudioRecorderProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -353,6 +364,7 @@
 				20450E43245FC84500D1C545 /* UserRespondedWithMock.swift in Sources */,
 				20450E45245FD27A00D1C545 /* SetupErroredMock.swift in Sources */,
 				20450E34245FA35F00D1C545 /* RecorderTests.swift in Sources */,
+				2085D02A24720727006D5FAD /* SuccessfulRecorderMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

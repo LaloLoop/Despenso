@@ -26,15 +26,20 @@ protocol RecorderDelegate {
 
 final class Recorder: NSObject, AVAudioRecorderDelegate, AVAudioPlayerDelegate {
     var audioSession: AudioSessionProtocol
-    var audioRecorder: AVAudioRecorder!
+    var recorderCreator: AudioRecorderProtocol
+    var stopRecorder: StopRecorder!
     var audioPlayer: AVAudioPlayer!
     
     var delegate: RecorderDelegate?
     
     // MARK: Public API
     
-    init(session audioSession: AudioSessionProtocol = AudioSession(), delegate: RecorderDelegate) {
+    init(
+        session audioSession: AudioSessionProtocol = AudioSession(),
+        recorderCreator: AudioRecorderProtocol = AudioRecorder(),
+        delegate: RecorderDelegate) {
         self.audioSession = audioSession
+        self.recorderCreator = recorderCreator
         self.delegate = delegate
     }
     
@@ -62,9 +67,11 @@ final class Recorder: NSObject, AVAudioRecorderDelegate, AVAudioPlayerDelegate {
         ]
         
         do {
-            audioRecorder = try AVAudioRecorder(url: audioFilename, settings: settings)
-            audioRecorder.delegate = self
-            audioRecorder.record()
+            stopRecorder = try self.recorderCreator.recordWith(
+                url: audioFilename,
+                settings: settings,
+                delegate: self
+            )
             
             delegate?.recordingStarted(self)
             
@@ -75,8 +82,7 @@ final class Recorder: NSObject, AVAudioRecorderDelegate, AVAudioPlayerDelegate {
     }
     
     func stopRecording() {
-        audioRecorder.stop()
-        audioRecorder = nil
+        stopRecorder()
     }
     
     func startPlaying() {
