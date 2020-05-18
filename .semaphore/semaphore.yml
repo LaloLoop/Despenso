@@ -34,6 +34,7 @@ blocks:
         commands:
           - checkout
           - cd MobileApps/iOS/Despenso/
+          - cp ~/Secrets/MobileApps/iOS/Despenso/GoogleService-Info.plist .
           - cache restore
           - bundle install
           - pod install
