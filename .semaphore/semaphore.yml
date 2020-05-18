@@ -34,8 +34,10 @@ blocks:
         commands:
           - checkout
           - cd MobileApps/iOS/Despenso/
+          - cp ~/Secrets/MobileApps/iOS/Despenso/GoogleService-Info.plist .
           - cache restore
           - bundle install
+          - pod install
           - cache store
       jobs:
         - name: Test
@@ -46,3 +48,5 @@ blocks:
         machine:
           type: a1-standard-4
           os_image: macos-xcode11
+      secrets:
+        - name: GoogleService-Info.plist

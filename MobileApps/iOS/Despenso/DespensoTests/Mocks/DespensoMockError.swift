@@ -9,3 +9,5 @@
 enum DespensoMockError: Error {
     case runtimeError(String)
 }
+
+let despensoInternalError = DespensoMockError.runtimeError("Internal API error")

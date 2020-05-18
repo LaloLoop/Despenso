@@ -44,7 +44,7 @@ struct RecordingView: View, RecorderDelegate {
             }
             .disabled(!recordingAllowed || playing)
             .alert(isPresented: $showAlertError) {
-                Alert(title: Text("Error getting recording permission"), message: Text(alertError), dismissButton: .default(Text("Ok")))
+                Alert(title: Text("Something went wrong"), message: Text(alertError), dismissButton: .default(Text("Ok")))
             }
             
             if !recordingAllowed {

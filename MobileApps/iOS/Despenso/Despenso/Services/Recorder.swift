@@ -26,15 +26,20 @@ protocol RecorderDelegate {
 
 final class Recorder: NSObject, AVAudioRecorderDelegate, AVAudioPlayerDelegate {
     var audioSession: AudioSessionProtocol
-    var audioRecorder: AVAudioRecorder!
+    var recorderCreator: AudioRecorderProtocol
+    var stopRecorder: StopRecorder!
     var audioPlayer: AVAudioPlayer!
     
     var delegate: RecorderDelegate?
     
     // MARK: Public API
     
-    init(session audioSession: AudioSessionProtocol = AudioSession(), delegate: RecorderDelegate) {
+    init(
+        session audioSession: AudioSessionProtocol = AudioSession(),
+        recorderCreator: AudioRecorderProtocol = AudioRecorder(),
+        delegate: RecorderDelegate) {
         self.audioSession = audioSession
+        self.recorderCreator = recorderCreator
         self.delegate = delegate
     }
     
@@ -56,27 +61,29 @@ final class Recorder: NSObject, AVAudioRecorderDelegate, AVAudioPlayerDelegate {
         let audioFilename = _getFileURL()
         let settings = [
             AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
-            AVSampleRateKey: 12000,
+            AVSampleRateKey: 16000,
             AVNumberOfChannelsKey: 1,
             AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
         ]
         
         do {
-            audioRecorder = try AVAudioRecorder(url: audioFilename, settings: settings)
-            audioRecorder.delegate = self
-            audioRecorder.record()
+            stopRecorder = try self.recorderCreator.recordWith(
+                url: audioFilename,
+                settings: settings,
+                delegate: self
+            )
             
             delegate?.recordingStarted(self)
             
         } catch {
             stopRecording()
-            self.delegate?.recordingFinished(self, successfully: false)
+            self.delegate?.recordingErrorDidOccur(self, error: "Error recording: \(error).")
         }
     }
     
     func stopRecording() {
-        audioRecorder.stop()
-        audioRecorder = nil
+        stopRecorder?()
+        self.delegate?.recordingFinished(self, successfully: false)
     }
     
     func startPlaying() {
