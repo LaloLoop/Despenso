@@ -27,6 +27,7 @@
 		2085D026247203ED006D5FAD /* AudioRecorderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2085D025247203ED006D5FAD /* AudioRecorderProtocol.swift */; };
 		2085D028247204C4006D5FAD /* AudioRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2085D027247204C4006D5FAD /* AudioRecorder.swift */; };
 		2085D02A24720727006D5FAD /* SuccessfulRecorderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2085D02924720727006D5FAD /* SuccessfulRecorderMock.swift */; };
+		2085D02C24720CCF006D5FAD /* FailingRecorderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2085D02B24720CCF006D5FAD /* FailingRecorderMock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		2085D025247203ED006D5FAD /* AudioRecorderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecorderProtocol.swift; sourceTree = "<group>"; };
 		2085D027247204C4006D5FAD /* AudioRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecorder.swift; sourceTree = "<group>"; };
 		2085D02924720727006D5FAD /* SuccessfulRecorderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessfulRecorderMock.swift; sourceTree = "<group>"; };
+		2085D02B24720CCF006D5FAD /* FailingRecorderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailingRecorderMock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +192,7 @@
 				20450E44245FD27A00D1C545 /* SetupErroredMock.swift */,
 				20450E46245FD38A00D1C545 /* DespensoMockError.swift */,
 				2085D02924720727006D5FAD /* SuccessfulRecorderMock.swift */,
+				2085D02B24720CCF006D5FAD /* FailingRecorderMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -363,6 +366,7 @@
 				20450E47245FD38A00D1C545 /* DespensoMockError.swift in Sources */,
 				20450E43245FC84500D1C545 /* UserRespondedWithMock.swift in Sources */,
 				20450E45245FD27A00D1C545 /* SetupErroredMock.swift in Sources */,
+				2085D02C24720CCF006D5FAD /* FailingRecorderMock.swift in Sources */,
 				20450E34245FA35F00D1C545 /* RecorderTests.swift in Sources */,
 				2085D02A24720727006D5FAD /* SuccessfulRecorderMock.swift in Sources */,
 			);

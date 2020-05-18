@@ -77,12 +77,13 @@ final class Recorder: NSObject, AVAudioRecorderDelegate, AVAudioPlayerDelegate {
             
         } catch {
             stopRecording()
-            self.delegate?.recordingFinished(self, successfully: false)
+            self.delegate?.recordingErrorDidOccur(self, error: "Error recording: \(error).")
         }
     }
     
     func stopRecording() {
-        stopRecorder()
+        stopRecorder?()
+        self.delegate?.recordingFinished(self, successfully: false)
     }
     
     func startPlaying() {

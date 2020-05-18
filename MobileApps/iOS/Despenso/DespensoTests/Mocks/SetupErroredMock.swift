@@ -12,6 +12,6 @@ import AVFoundation
 class SetupErroredMock: AudioSessionProtocol {
     
     func requestRecordPermissionWith(_ category: AVAudioSession.Category, mode: AVAudioSession.Mode, active: Bool, _ response: @escaping PermissionBlock) throws {
-        throw DespensoMockError.runtimeError("Internal API error")
+        throw despensoInternalError
     }
 }

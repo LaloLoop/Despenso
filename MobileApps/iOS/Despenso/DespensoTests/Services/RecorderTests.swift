@@ -74,6 +74,23 @@ class RecorderTests: XCTestCase {
         XCTAssert(audioRecorder.stopRecorderCalled, "Stop recorder callback was never called")
     }
     
+    func testRecordingFailsToStart() throws {
+        audioRecorderMock = FailingRecorderMock()
+        recorder = Recorder(
+            session: audioSessionMock,
+            recorderCreator:  audioRecorderMock,
+            delegate: recorderDelegate
+        )
+        
+        recorder.startRecording()
+        
+        let delegate = recorderDelegate as! RecorderDelegateMock
+        
+        XCTAssert(delegate.recordingErrorDidOccurCalled, "Did not call delegate on recorder exception")
+        XCTAssert(delegate.recordingFinishedCalled, "Did not notify delegate about stopped recording")
+        XCTAssert(delegate.error.contains("Internal API error"),"Error not reported back to delegate")
+    }
+    
     // MARK: Common setup and tests
     
     private func _setupUserAllowed(_ allowed: Bool) throws -> RecorderDelegateMock {
