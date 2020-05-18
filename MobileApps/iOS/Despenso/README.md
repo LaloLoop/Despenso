@@ -18,6 +18,10 @@ In my experience, there's no point in testing exact calls to functions in classe
 
 UI tests with run without mocking, which make them more like E2E tests.
 
+## Building
+
+Firebase was added to support some of the features required by the app, but moreover, because I wanted to build an app with it 😄. This repo does not contain my own `GoogleService-Info.plist` file, mainly because of the reasons described in [this Stack Overflow answer](https://stackoverflow.com/a/44937513/3211335). Please configure your own Firebase project and link your own configuration.
+
 ## ToDos
 
 - [x] Allow for audio input of the list
